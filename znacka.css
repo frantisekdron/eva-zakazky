@@ -1,11 +1,54 @@
-/* Barvy značky klienta: Eva Goldšmíd.
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&display=swap");
+
+/* Značka klienta: Eva Goldšmíd — „Atelier“ (barvy, písmo).
+   Světlý kokpit: bílý papír, pudrová růžová, černá linka. Úpravy prvků
+   a přírodní okénko jsou ve vlastni.css / vlastni.js.
    Generuje skill kokpit-zakazek, ruční úpravy přežijí aktualizace šablony. */
+
 :root {
-  --gold:       #5b98e4;
-  --gold-hi:    #a5c6f0;
-  --gold-dim:   #4670a4;
-  --gold-rgb:   91, 152, 228;
-  --gold-ghost: rgba(var(--gold-rgb), 0.12);
-  --teal:       #ff2e1f;
-  --teal-rgb:   255, 46, 31;
+  color-scheme: light;
+
+  /* plochy: od stránky po nejsytější růžovou */
+  --ink:        #fdf7f8;
+  --ink-2:      #ffffff;
+  --ink-3:      #fbeef2;
+  --ink-4:      #f6e0e7;
+  --panel:      #ffffff;
+  --panel-hi:   #fdf4f6;
+  --line:       #f0dfe5;
+  --line-hi:    #e3c4cf;
+
+  /* text: černá linka */
+  --paper:      #1a1416;
+  --muted:      #6e5c63;
+  --muted-2:    #7d6a72;
+
+  /* růže: --gold je v šabloně „barva značky“ */
+  --gold:       #b03a68;
+  --gold-hi:    #8e2a50;
+  --gold-dim:   #9b5576;
+  --gold-rgb:   176, 58, 104;
+  --gold-ghost: rgba(var(--gold-rgb), 0.08);
+  --pudr:       #f4c9d5;
+  --pudr-2:     #f9e1e8;
+  --stin:       58, 20, 36;
+
+  /* klient = černá, studio = růže */
+  --teal:       #1a1416;
+  --teal-rgb:   26, 20, 22;
+  --teal-ghost: rgba(var(--teal-rgb), 0.05);
+  --sage:       #4f7d5e;
+  --rust:       #c0392b;
+  --amber:      #a9742a;
+  --koment:     rgba(var(--gold-rgb), 0.06);
+
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-mono:    "DM Mono", ui-monospace, "SF Mono", monospace;
+
+  --r-sm: 8px;
+  --r:    12px;
+  --r-lg: 20px;
+  --oblouk: 50% 50% var(--r) var(--r) / 40% 40% var(--r) var(--r);
+
+  --kresba: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 300' fill='none' stroke='%231a1416' stroke-width='1.15' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle stroke='none' cx='92' cy='104' r='46' fill='%23f4c9d5'/%3E%3Cg%3E%3Cpath d='M6 287C38 285 50 289 64 287C62 240 65 192 64 150C63 92 96 50 128 50C162 50 193 90 192 148C191 196 194 246 192 287C210 285 220 289 236 287'/%3E%3Cpath d='M78 287C77 236 79 194 78 156C78 108 104 68 128 68C153 68 179 106 178 154C178 200 177 244 178 287'/%3E%3Cpath d='M117 287C110 274 106 258 113 246C118 238 122 232 121 224C121 220 122 217 123 215L133 215C134 217 135 220 135 224C134 232 138 238 143 246C150 258 146 274 139 287'/%3E%3Cpath d='M128 215C127 186 123 160 113 128C108 112 104 102 98 92'/%3E%3Cpath d='M121 170C131 158 140 146 146 128C149 118 150 110 150 102'/%3E%3Cpath d='M116 146C107 140 99 132 94 120'/%3E%3Cpath d='M98 92C93 88 90 82 91 76C96 79 99 85 98 92Z'/%3E%3Cpath d='M150 102C147 96 147 89 151 84C154 90 153 96 150 102Z'/%3E%3Cpath d='M94 120C88 118 84 113 83 107C89 108 93 113 94 120Z'/%3E%3Cpath d='M146 128C151 124 157 123 162 124C158 129 152 130 146 128Z'/%3E%3Cpath d='M113 128C106 127 101 123 99 118C105 118 110 122 113 128Z'/%3E%3C/g%3E%3C/svg%3E");
 }
