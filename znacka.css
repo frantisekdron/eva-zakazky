@@ -1,0 +1,11 @@
+/* Barvy značky klienta: Eva Goldšmíd.
+   Generuje skill kokpit-zakazek, ruční úpravy přežijí aktualizace šablony. */
+:root {
+  --gold:       #5b98e4;
+  --gold-hi:    #a5c6f0;
+  --gold-dim:   #4670a4;
+  --gold-rgb:   91, 152, 228;
+  --gold-ghost: rgba(var(--gold-rgb), 0.12);
+  --teal:       #ff2e1f;
+  --teal-rgb:   255, 46, 31;
+}
