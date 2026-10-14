@@ -80,6 +80,69 @@
     ['Čirůvka fialová', '10-01', '12-15', 'v jehličí a na kompostu', 'do polévky, jen tepelně upravená', 'záměna s fialovými pavučinci — ti mají pod kloboukem pavučinku'],
   ];
 
+  // Fotky z Wikimedia Commons, zmenšené v okenko/: [soubor, autor, licence, stránka fotky]
+  const FOTO = {
+    "Bedla vysoká": ["bedla-vysoka.webp", "Holger Krisp", "CC BY 3.0", "https://commons.wikimedia.org/wiki/File:Parasol-Macrolepiota-procera.jpg"],
+    "Bez černý": ["bez-cerny.webp", "Willow", "CC BY 2.5", "https://commons.wikimedia.org/wiki/File:Sambucus_nigra_004.jpg"],
+    "Borovice lesní": ["borovice-lesni.webp", "Mickaël Delcey (Silverkey)", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Skuleskogen_pine.jpg"],
+    "Borůvka": ["boruvka.webp", "MAKY.OREL", "CC0", "https://commons.wikimedia.org/wiki/File:Blueberry_-_Vaccinium_myrtillus_(fruit).jpg"],
+    "Brusinka": ["brusinka.webp", "Jonas Bergsten", "Public domain", "https://commons.wikimedia.org/wiki/File:Vaccinium_vitis-idaea_20060824_003.jpg"],
+    "Bříza bělokorá": ["briza-belokora.webp", "Percita at Flickr", "CC BY-SA 2.0", "https://commons.wikimedia.org/wiki/File:Betula_pendula_Finland.jpg"],
+    "Heřmánek pravý": ["hermanek-pravy.webp", "Alvesgaspar", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Matricaria_February_2008-1.jpg"],
+    "Hloh": ["hloh.webp", "Elstro", "CC BY 3.0", "https://commons.wikimedia.org/wiki/File:Hawthorn_fruit.JPG"],
+    "Hlíva ústřičná": ["hliva-ustricna.webp", "autor na stránce fotky", "CC BY 3.0", "https://commons.wikimedia.org/wiki/File:Pleurotus_ostreatus_JPG7.jpg"],
+    "Hřib dubový": ["hrib-dubovy.webp", "Rude", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Boletus.JPG"],
+    "Hřib kovář": ["hrib-kovar.webp", "George Chernilevsky", "Public domain", "https://commons.wikimedia.org/wiki/File:Boletus_erythropus_2010_G3.jpg"],
+    "Hřib smrkový": ["hrib-smrkovy.webp", "ReddishClover", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Boletus_edulis_IT.jpg"],
+    "Jahodník obecný": ["jahodnik-obecny.webp", "Jörg Hempel", "CC BY-SA 3.0 de", "https://commons.wikimedia.org/wiki/File:Fragaria_vesca_LC0389.jpg"],
+    "Jeřáb ptačí": ["jerab-ptaci.webp", "Bysmon", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Rowan-berries_(Sorbus_aucuparia),_Sweden,_20150828e.jpg"],
+    "Jitrocel kopinatý": ["jitrocel-kopinaty.webp", "sannse", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Ribwort_600.jpg"],
+    "Jmelí bílé": ["jmeli-bile.webp", "George Chernilevsky", "CC BY 4.0", "https://commons.wikimedia.org/wiki/File:Viscum_album_2026_G1.jpg"],
+    "Klouzek obecný": ["klouzek-obecny.webp", "walt sturgeon (Mycowalt)", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Suillus_luteus_475376.jpg"],
+    "Kontryhel obecný": ["kontryhel-obecny.webp", "Andrea Moro", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Alchemilla_xanthochlora_plant_(04).jpg"],
+    "Kopřiva dvoudomá": ["kopriva-dvoudoma.webp", "Evelyn Simak", "CC BY-SA 2.0", "https://commons.wikimedia.org/wiki/File:Fen_nettle_(Urtica_dioica_ssp._galeopsifolia)_-_geograph.org.uk_-_5423125.jpg"],
+    "Kostival lékařský": ["kostival-lekarsky.webp", "Agnieszka Kwiecień (Nova)", "CC BY 2.5", "https://commons.wikimedia.org/wiki/File:Symphytum_officinale_01.jpg"],
+    "Kotrč kadeřavý": ["kotrc-kaderavy.webp", "Dominicus Johannes Bergsma", "CC0", "https://commons.wikimedia.org/wiki/File:Grote_sponszwam_(Sparassis_crispa)._09-11-2023._(d.j.b).jpg"],
+    "Kozlík lékařský": ["kozlik-lekarsky.webp", "Ivar Leidus", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Valeriana_officinalis_inflorescence_-_Niitv%C3%A4lja.jpg"],
+    "Kozák březový": ["kozak-brezovy.webp", "neznámý autor", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Birkenpilz01.jpg"],
+    "Křemenáč osikový": ["kremenac-osikovy.webp", "Hans Hillewaert", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Leccinum_aurantiacum.jpg"],
+    "Křen selský": ["kren-selsky.webp", "Pethan", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Armoracia_rusticana.jpg"],
+    "Levandule lékařská": ["levandule-lekarska.webp", "Norbert Nagel", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Lavandula_angustifolia_-_lavender_-_Lavendel_-_01.jpg"],
+    "Liška obecná": ["liska-obecna.webp", "neznámý autor", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Chanterelle_Cantharellus_cibarius.jpg"],
+    "Lopuch větší": ["lopuch-vetsi.webp", "Christian Fischer", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:ArctiumLappa1.jpg"],
+    "Lípa srdčitá": ["lipa-srdcita.webp", "neznámý autor", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Tilia-cordata2.JPG"],
+    "Mateřídouška": ["materidouska.webp", "neznámý autor", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Thymus_serpyllum1.jpg"],
+    "Meduňka lékařská": ["medunka-lekarska.webp", "Amitchell125", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Lemon_balm_plant.jpg"],
+    "Medvědí česnek": ["medvedi-cesnek.webp", "Rodolph", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Photo_of_Allium_Ursinum,_wild_garlic,_north-west_Hampshire,_UK,_May_2014.jpg"],
+    "Máta peprná": ["mata-peprna.webp", "neznámý autor", "CC BY 3.0", "https://commons.wikimedia.org/wiki/File:Pfefferminze_natur_peppermint.jpg"],
+    "Měsíček lékařský": ["mesicek-lekarsky.webp", "Betty Cai", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Calendula_officinalis,_pot_marigold.JPG"],
+    "Ostropestřec mariánský": ["ostropestrec-mariansky.webp", "fir0002 flagstaffotos [at] gmail.com Canon 20D + Sigma 150mm f/2.8", "GFDL 1.2", "https://commons.wikimedia.org/wiki/File:Milk_thistle_flowerhead.jpg"],
+    "Ostružiník": ["ostruzinik.webp", "Ivar Leidus", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Blackberry_(Rubus_fruticosus).jpg"],
+    "Pampeliška": ["pampeliska.webp", "neznámý autor", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Maskros_2.jpg"],
+    "Penízovka sametonohá": ["penizovka-sametonoha.webp", "autor na stránce fotky", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:2009-11-19_Flammulina_velutipes_agg_biolib.cz_crop.jpg"],
+    "Pečárka polní": ["pecarka-polni.webp", "neznámý autor", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Agaricus_campestris.jpg"],
+    "Plicník lékařský": ["plicnik-lekarsky.webp", "neznámý autor", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Pulmonaria_officinalis_800.jpg"],
+    "Podběl lékařský": ["podbel-lekarsky.webp", "Andreas Trepte", "CC BY-SA 2.5", "https://commons.wikimedia.org/wiki/File:Coltsfoot.jpg"],
+    "Pýchavka obecná": ["pychavka-obecna.webp", "Daniel Ullrich, Threedots", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Single_lycoperdon_perlatum.jpg"],
+    "Rakytník řešetlákový": ["rakytnik-resetlakovy.webp", "autor na stránce fotky", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Hippophae_rhamnoides-01_(xndr).JPG"],
+    "Ryzec pravý": ["ryzec-pravy.webp", "neznámý autor", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Lactarius_deliciosus.jpg"],
+    "Sedmikráska": ["sedmikraska.webp", "D-Kuru", "CC BY-SA 3.0 at", "https://commons.wikimedia.org/wiki/File:Bellis_perennis_close_up_PNr%C2%B00025.jpg"],
+    "Smrk ztepilý": ["smrk-ztepily.webp", "Ivar Leidus", "CC BY-SA 3.0 ee", "https://commons.wikimedia.org/wiki/File:Kuusk_Keila-Paldiski_rdt_%C3%A4%C3%A4res.jpg"],
+    "Smrž obecný": ["smrz-obecny.webp", "TOMMES-WIKI", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Morchella_esculenta_-_DE_-_TH_-_2013-05-01_-_01.JPG"],
+    "Trnka": ["trnka.webp", "Martin Olsson (mnemo on en/sv wikipedia and commons, martin@minimum.se)", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Closeup_of_blackthorn_aka_sloe_aka_prunus_spinosa_sweden_20050924.jpg"],
+    "Tymián obecný": ["tymian-obecny.webp", "Henry Brisse (upload by user:Abalg)", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Thymus_vulgaris1.JPG"],
+    "Třezalka tečkovaná": ["trezalka-teckovana.webp", "Didier Descouens", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:(MHNT)_Hypericum_perforatum_flower_and_buttons.jpg"],
+    "Ucho Jidášovo": ["ucho-jidasovo.webp", "Stu's Images", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Jelly_Ear,_Auricularia_auricula-judae,_UK_2.jpg"],
+    "Vrba bílá": ["vrba-bila.webp", "MPF", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Salix_alba_leaves.jpg"],
+    "Václavka obecná": ["vaclavka-obecna.webp", "Stu's Images", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Armillaria_mellea,_Honey_Fungus,_UK_1.jpg"],
+    "Vřes obecný": ["vres-obecny.webp", "Aqwis (Aqwis)", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:CallunaVulgaris.jpg"],
+    "Čirůvka fialová": ["ciruvka-fialova.webp", "This image was created by user Jimmie Veitch (jimmiev) at Mushroom Observer, a s", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Clitocybe_nuda_(Fr.)_H.E._Bigelow_%26_A.H._Sm_267650.jpg"],
+    "Čirůvka májovka": ["ciruvka-majovka.webp", "User:Strobilomyces", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Calocybe_gambosa_080420wa.jpg"],
+    "Řebříček obecný": ["rebricek-obecny.webp", "SAplants", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Achillea_millefolium_(bright).jpg"],
+    "Šalvěj lékařská": ["salvej-lekarska.webp", "Kurt Stüber [1]", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Salvia_officinalis0.jpg"],
+    "Šípek": ["sipek.webp", "böhringer friedrich", "CC BY-SA 2.5", "https://commons.wikimedia.org/wiki/File:Rosa_canina,_Hagebutten_02.JPG"],
+  };
+
   const RADY = [
     'Čas zásob. Sušené byliny skladuj v suchu a tmě, nejdéle rok.',
     'Na kmenech roste hlíva a penízovka. Pupeny borovic se už nalévají.',
@@ -181,18 +244,22 @@
     const klicDne = `${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
     const znacka = (s) => (s ? ` <span class="ok-stitek">${s}</span>` : '');
 
-    const radkyBylinek = bylinky.map(([jmeno, cast, od, do_, k, pozor]) => `
-      <li>
-        <p class="ok-jmeno">${esc(jmeno)} <span class="ok-cast">${esc(cast)}</span>${znacka(stitek(d, od, do_))}</p>
-        <p class="ok-k">${esc(k)}</p>
-        ${pozor ? `<p class="ok-pozor">${esc(pozor)}</p>` : ''}
-      </li>`).join('');
-    const radkyHub = houby.map(([jmeno, od, do_, kde, k, pozor]) => `
-      <li>
-        <p class="ok-jmeno">${esc(jmeno)} <span class="ok-cast">${esc(kde)}</span>${znacka(stitek(d, od, do_))}</p>
-        <p class="ok-k">${esc(k)}</p>
-        ${pozor ? `<p class="ok-pozor">${esc(pozor)}</p>` : ''}
-      </li>`).join('');
+    const polozka = (jmeno, popisek, od, do_, k, pozor) => {
+      const f = FOTO[jmeno];
+      return `
+      <li class="${f ? 's-fotkou' : ''}">
+        ${f ? `<a class="ok-foto" href="${esc(f[3])}" target="_blank" rel="noopener"
+               title="${esc(jmeno)} — foto: ${esc(f[1])}, ${esc(f[2])} (Wikimedia Commons)">
+               <img src="okenko/${esc(f[0])}" alt="${esc(jmeno)}" width="52" height="60" loading="lazy" decoding="async"></a>` : ''}
+        <div>
+          <p class="ok-jmeno">${esc(jmeno)} <span class="ok-cast">${esc(popisek)}</span>${znacka(stitek(d, od, do_))}</p>
+          <p class="ok-k">${esc(k)}</p>
+          ${pozor ? `<p class="ok-pozor">${esc(pozor)}</p>` : ''}
+        </div>
+      </li>`;
+    };
+    const radkyBylinek = bylinky.map(([jmeno, cast, od, do_, k, pozor]) => polozka(jmeno, cast, od, do_, k, pozor)).join('');
+    const radkyHub = houby.map(([jmeno, od, do_, kde, k, pozor]) => polozka(jmeno, kde, od, do_, k, pozor)).join('');
 
     return {
       sezona,
@@ -206,7 +273,7 @@
       <section><h3>Bylinky</h3>${radkyBylinek ? `<ul>${radkyBylinek}</ul>` : '<p class="ok-k">Venku teď nic — sáhni do sušených zásob.</p>'}</section>
       ${radkyHub ? `<section><h3>Houby</h3><ul>${radkyHub}</ul></section>` : ''}
     </div>
-    <p class="okenko-pata">Sbírej jen to, co bezpečně poznáš.</p>
+    <p class="okenko-pata">Sbírej jen to, co bezpečně poznáš.<br>Fotky: Wikimedia Commons — autor a licence po kliknutí na fotku.</p>
   </div>`,
     };
   }
@@ -245,4 +312,44 @@
     okenko.dataset.sezona = sezona;
     okenko.innerHTML = html;
   }
+})();
+
+/* Náhled zakázky z fotky, dokud není video.
+   Karta bere obrázek z videa (Vimeo). Když video ještě není a v soukromých datech
+   leží soubory/<id-zakázky>/obal.webp, ukáže se ta fotka. Jakmile video přibude,
+   karta se vrátí k náhledu z videa. Fotku nahrává studio (gh api / kokpit.py). */
+(() => {
+  const obaly = new Map();   // id zakázky → adresa obrázku | null (není) | Promise (načítá se)
+
+  async function nactiObal(id) {
+    try {
+      const r = await GH.volej(`${GH.cesta(`soubory/${id}/obal.webp`)}?ref=${CFG.branch}`,
+        { headers: { Accept: 'application/vnd.github.raw' } });
+      return r.ok ? URL.createObjectURL(await r.blob()) : null;
+    } catch { return null; }
+  }
+
+  function vlozObaly() {
+    if (typeof GH === 'undefined' || !GH.token) return;
+    document.querySelectorAll('#plocha .karta[data-karta]').forEach((karta) => {
+      if (karta.querySelector('.karta-nahled')) return;   // má video, nebo už fotku
+      const id = karta.dataset.karta;
+      const obal = obaly.get(id);
+      if (obal === undefined) {
+        obaly.set(id, nactiObal(id).then((url) => { obaly.set(id, url); if (url) vlozObaly(); }));
+        return;
+      }
+      if (!obal || obal instanceof Promise) return;
+      const nazev = karta.querySelector('.karta-nadpis h3')?.textContent || '';
+      const tl = document.createElement('button');
+      tl.className = 'karta-nahled karta-obal';
+      tl.dataset.akce = 'otevri';
+      tl.dataset.id = id;
+      tl.setAttribute('aria-label', `Otevřít ${nazev}`);
+      tl.innerHTML = `<img src="${obal}" alt="">`;
+      karta.prepend(tl);
+    });
+  }
+
+  document.addEventListener('kokpit:prekresleno', vlozObaly);
 })();

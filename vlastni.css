@@ -377,6 +377,16 @@ main.s-okenkem > .okenko { margin-top: 30px; }
 .okenko ul { list-style: none; margin: 0; padding: 0; }
 .okenko li { padding: 9px 0; }
 .okenko li + li { border-top: 1px dashed var(--line); }
+/* fotka v malém oblouku — jako okno v okně */
+.okenko li.s-fotkou { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 13px; align-items: start; }
+.ok-foto {
+  display: block; width: 52px; height: 60px; overflow: hidden; margin-top: 2px;
+  border-radius: 26px 26px 6px 6px; background: var(--ink-3);
+  box-shadow: 0 0 0 3px #fff, 0 0 0 4px var(--line-hi);
+  transition: box-shadow 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.ok-foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ok-foto:hover { transform: translateY(-1px); box-shadow: 0 0 0 3px #fff, 0 0 0 4px var(--gold); }
 .ok-jmeno { margin: 0; font-size: 14.5px; font-weight: 600; line-height: 1.35; }
 .ok-cast { margin-left: 3px; font-family: var(--font-mono); font-size: 10.5px; font-weight: 400; color: var(--muted-2); }
 .ok-stitek {
@@ -389,7 +399,7 @@ main.s-okenkem > .okenko { margin-top: 30px; }
   font-size: 12px; line-height: 1.45; color: var(--gold-hi);
 }
 .ok-pozor::before { content: "Pozor: "; font-weight: 600; }
-.okenko-pata { margin: auto 0 0; padding-top: 14px; font-family: var(--font-mono); font-size: 10.5px; color: var(--muted-2); }
+.okenko-pata { margin: auto 0 0; padding-top: 14px; font-family: var(--font-mono); font-size: 10.5px; line-height: 1.6; color: var(--muted-2); }
 
 .okenko-sloupce { display: flex; flex-direction: column; }
 
