@@ -439,4 +439,4 @@ main.s-okenkem > .okenko { margin-top: 30px; }
 
 /* ---------------------------------------------------- bez ceníku
    Franta 14. 10. 2026: u Evy ceník není (data/cenik.json je prázdný). */
-.zalozka-cenik { display: none !important; }
+.zalozka-cenik[data-akce="cenik"] { display: none !important; }
