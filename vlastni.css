@@ -426,3 +426,7 @@ main.s-okenkem > .okenko { margin-top: 30px; }
   .suplik-telo { padding: 12px 12px 40px; }
   .zamek h1 { font-size: 46px; }
 }
+
+/* ---------------------------------------------------- bez ceníku
+   Franta 14. 10. 2026: u Evy ceník není (data/cenik.json je prázdný). */
+.zalozka-cenik { display: none !important; }
