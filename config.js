@@ -13,6 +13,10 @@ window.CFG = {
     "studio": "Franta",
     "klient": "Eva"
   },
+  "studioEmail": "frantisekdron@gmail.com",
+  "moduly": {
+    "reklamy": true
+  },
   "iterace": 600000,
   "blobs": {
     "studio": "Ufz8fYGnhD4OWZYGOjlZC9NAuU+L6zHdBWhJL+iz0M0209vQOFKEwHe0jDbdyWi4+Y8Z9/9fgvgouDMCXpm6hQjSGooCCztsi9NrxzK9zunsbsHCw+3mQqXQPzKKb7FhuZ4Se6amiy+V2CvcLz+muDqyXSxSAFgdsiQaVUzRmhB0c2aypnUuEFE=",
