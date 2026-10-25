@@ -92,6 +92,8 @@ function vimeoInfo(raw) {
 }
 
 const nahledy = new Map();
+/* Videa, která Vimeo do kokpitu nepustí (soukromá, vložení zakázané, smazaná). */
+const NEDOSTUPNA_VIDEA = new Set();
 
 async function vimeoNahled(info) {
   if (nahledy.has(info.id)) return nahledy.get(info.id);
@@ -99,6 +101,7 @@ async function vimeoNahled(info) {
   const ulozeny = pamet.cti(klic);
   if (ulozeny) { nahledy.set(info.id, ulozeny); return ulozeny; }
   const r = await fetch(`https://vimeo.com/api/oembed.json?url=${encodeURIComponent(info.verejny)}&width=800`);
+  if (r.status === 403 || r.status === 404) throw Object.assign(new Error('video nedostupné'), { nedostupne: true });
   if (!r.ok) throw new Error('bez náhledu');
   const { thumbnail_url } = await r.json();
   if (!thumbnail_url) throw new Error('bez náhledu');
@@ -902,9 +905,13 @@ function karta(z) {
   return `
     <article class="karta" id="karta-${esc(z.id)}" draggable="true" data-karta="${esc(z.id)}">
       ${info ? `
-        <button class="karta-nahled" data-akce="otevri" data-id="${esc(z.id)}"
+        <button class="karta-nahled${NEDOSTUPNA_VIDEA.has(info.id) ? ' nedostupne' : ''}" data-akce="otevri-video"
+                data-id="${esc(z.id)}" data-vid="${esc(obal.id)}"
                 data-nahled="${esc(info.id)}" data-hash="${esc(info.hash || '')}"
-                aria-label="Otevřít ${esc(z.nazev)}"></button>` : ''}
+                aria-label="Přehrát video ${esc(z.nazev)}">
+          <span class="nahled-hrat"><svg class="icon"><use href="#i-prehrat"/></svg></span>
+          ${NEDOSTUPNA_VIDEA.has(info.id) ? '<span class="nahled-chyba">Video je na Vimeu soukromé — otevři detail</span>' : ''}
+        </button>` : ''}
 
       <div class="karta-telo">
         <button class="karta-nadpis" data-akce="otevri" data-id="${esc(z.id)}">
@@ -924,6 +931,9 @@ function karta(z) {
         </dl>
 
         <div class="karta-odkazy">
+          ${z.videa.filter((v) => vimeoInfo(v.vimeo)).slice(0, 3).map((v) => `
+            <a class="chip chip-video" href="${esc(vimeoInfo(v.vimeo).verejny)}" target="_blank" rel="noopener" draggable="false"
+               title="Otevřít video na Vimeu"><svg class="icon"><use href="#i-prehrat"/></svg><span>${/video/i.test(v.nazev || '') ? esc(v.nazev) : `Video${v.nazev ? ' ' + esc(v.nazev) : ''}`}</span></a>`).join('')}
           ${chipOdkaz('i-dum', 'Inzerát', z.inzerat, z.id, 'inzerat')}
           ${chipOdkaz('i-foto', 'Fotky', z.fotky, z.id, 'fotky')}
           ${chipOdkaz('i-kostka', 'Vizualizace', z.vizualizace, z.id, 'vizualizace')}
@@ -953,6 +963,7 @@ const chipOdkaz = (ikona, popis, url, zid, klic) => url
 async function dopnutiNahledu(prvek) {
   prvek.dataset.hotovo = '1';
   const { nahled: id, hash } = prvek.dataset;
+  if (NEDOSTUPNA_VIDEA.has(id)) return;
   try {
     const url = await vimeoNahled({ id, hash, verejny: `https://vimeo.com/${id}${hash ? '/' + hash : ''}` });
     const img = new Image();
@@ -961,7 +972,13 @@ async function dopnutiNahledu(prvek) {
     img.loading = 'lazy';
     img.draggable = false;
     prvek.prepend(img);
-  } catch { /* náhled není povinný */ }
+  } catch (e) {
+    /* Náhled není povinný. Soukromé video se ale v kokpitu nikdy nepřehraje — to řekneme. */
+    if (!e.nedostupne || NEDOSTUPNA_VIDEA.has(id)) return;
+    NEDOSTUPNA_VIDEA.add(id);
+    vykresliPlochu();
+    if (UI.otevrena) vykresliSuplik();
+  }
 }
 
 /* Přesune zakázku `id` na místo zakázky `cilId`. Pracuje s identifikátory,
@@ -1002,7 +1019,8 @@ function prekresli(kontejner, html) {
       /* Přehrávač nechat, jen když je to přesně tatáž adresa (i s hashem skrytého videa). */
       if (stary.tagName === 'IFRAME' && novy.tagName === 'IFRAME' && stary.getAttribute('src') === novy.getAttribute('src')) return false;
       if (stary.dataset.hotovo && (
-        (stary.dataset.nahled && stary.dataset.nahled === novy.dataset.nahled && (stary.dataset.hash || '') === (novy.dataset.hash || '')) ||
+        (stary.dataset.nahled && stary.dataset.nahled === novy.dataset.nahled && (stary.dataset.hash || '') === (novy.dataset.hash || '')
+          && stary.classList.contains('nedostupne') === novy.classList.contains('nedostupne')) ||
         (stary.dataset.soubor && stary.dataset.soubor === novy.dataset.soubor))) return false;
       /* Žádná zkratka přes isEqualNode: vidí jen atributy, takže by blok s polem,
          ve kterém je jiný text, prohlásila za stejný a pole by nikdy nesrovnala. */
@@ -1091,11 +1109,11 @@ function htmlDetail(z) {
     </div>
 
     <div class="suplik-telo">
+      ${panelVidei(z)}
       ${panelPrednosti(z)}
       ${panelOdkazu(z)}
       ${panelSouboru(z, 'pudorysy')}
       ${panelNapadu(z)}
-      ${panelVidei(z)}
       ${panelSouboru(z, 'bannery')}
       <div class="detail-pata">
         <button class="mini zrus" data-akce="smazat-zakazku"><svg class="icon"><use href="#i-kos"/></svg> Smazat zakázku</button>
@@ -1282,7 +1300,12 @@ function videoKarta(z, v) {
   const info = vimeoInfo(v.vimeo);
   return `
     <div class="video-karta polozka ${v.format === '9:16' ? 'w916' : 'w169'}" id="video-${esc(v.id)}">
-      ${info
+      ${info && NEDOSTUPNA_VIDEA.has(info.id)
+        ? `<button class="vk-bezodkazu vk-soukrome" data-akce="video-upravit" data-vid="${esc(v.id)}">
+             <svg class="icon"><use href="#i-odkaz"/></svg>
+             <span><b>Video je na Vimeu soukromé — tady se nepřehraje</b>Na Vimeu u videa: Sdílet → Soukromí „Kdokoli s odkazem“ a Vložit → „Kdekoli“. Pak sem vložit nový odkaz (s kódem za lomítkem).</span>
+           </button>`
+        : info
         ? `<div class="vk-ramecek">
              ${UI.hraje.has(v.id)
                ? `<iframe src="${esc(info.embed)}&autoplay=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${esc(v.nazev)}"></iframe>`
@@ -1637,6 +1660,17 @@ async function akce(jmeno, prvek) {
   if (jmeno === 'zavri') return zavri();
   if (jmeno === 'nova') return novaZakazka();
   if (jmeno === 'otevri') return otevri(d.id);
+  /* ▶ na kartě: detail se otevře rovnou s puštěným videem (videa jsou v detailu nahoře). */
+  if (jmeno === 'otevri-video') {
+    otevri(d.id);
+    const v = S.zakazky.find((x) => x.id === d.id)?.videa.find((x) => x.id === d.vid);
+    const info = vimeoInfo(v?.vimeo);
+    if (info && !NEDOSTUPNA_VIDEA.has(info.id)) {
+      UI.hraje.add(d.vid);
+      vykresliSuplik();
+    }
+    return;
+  }
 
   /* odkaz na fotky nebo vizualizace jde upravit i z karty na nástěnce */
   if (jmeno === 'odkaz') {
