@@ -246,6 +246,12 @@ h1, h2, h3 { font-weight: 400; letter-spacing: -0.005em; }
 .vk-ramecek { border-radius: 0; }
 .vk-prehrat .kolecko { background: rgba(255, 255, 255, 0.88); border-color: transparent; color: var(--gold); }
 .vk-prehrat:hover .kolecko { background: var(--gold); color: #fff; }
+/* ▶ na náhledu karty a hláška u soukromého videa — ve světlém vzhledu */
+.karta-nahled .nahled-hrat { background: rgba(255, 255, 255, 0.9); border-color: transparent; color: var(--gold); }
+.karta-nahled:hover .nahled-hrat { background: var(--gold); color: #fff; }
+.nahled-chyba { background: rgba(255, 255, 255, 0.92); color: var(--paper); box-shadow: 0 6px 18px -10px rgba(var(--stin), 0.5); }
+.chip-video { border-color: var(--pudr); background: var(--pudr-2); }
+.chip-video:hover { background: var(--pudr); }
 .vk-format { background: var(--ink-3); color: var(--gold-dim); border-radius: 100px; padding: 2px 8px; }
 
 .napady-skupina { background: var(--ink); border-color: var(--line); border-left-color: var(--barva); }
